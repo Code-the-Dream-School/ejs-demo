@@ -13,12 +13,12 @@
   <p><%= message %></p>
   <div class="jumbotron">
     <% if (tasks.length > 0) { %>
-      <table class="table"
+      <table class="table">
         <tr><th>Name</th><th>Completed</th><th colspan="2"></th></tr>
         <% tasks.forEach(function(task){ %>
           <tr><td><%= task.name %></td><td><%= task.completed %></td>
-            <td><a href=<%= "/tasks/edit/" + task.id %>  class="btn btn-primary">Edit</a></td>
-            <td><a href=<%= "/tasks/delete/" + task.id %>  class="btn btn-primary">Delete</a></td>
+            <td><a href="<%= "/tasks/edit/" + task.id %>" class="btn btn-primary">Edit</a></td>
+            <td><a href="<%= "/tasks/delete/" + task.id %>" class="btn btn-primary">Delete</a></td>
           </tr>
         <% }) %>
       </table>
