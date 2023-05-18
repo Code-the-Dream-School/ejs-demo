@@ -1,11 +1,10 @@
-var express = require("express");
-var app = express();
-const session = require("express-session");
 require("dotenv").config();
-const Task = require("./models/Task");
+const express = require("express");
+const app = express();
+const session = require("express-session");
+const connectDB = require("./db/connect");
 const taskRouter = require("./routes/tasks");
 const setMessage = require("./middleware/message");
-const connectDB = require("./db/connect");
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -18,6 +17,7 @@ app.use(
 );
 app.use(express.urlencoded({ extended: false }));
 app.use("/tasks", setMessage, taskRouter);
+
 // use res.render to load up an ejs view file
 // index page
 app.get("/", function (req, res) {
@@ -40,8 +40,7 @@ app.get("/about", function (req, res) {
   res.render("pages/about");
 });
 
-//app.listen(8080);
-//console.log('Server is listening on port 8080');
+
 const port = 8080;
 const start = async () => {
   try {
